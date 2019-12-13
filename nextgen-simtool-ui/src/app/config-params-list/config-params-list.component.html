@@ -1,0 +1,49 @@
+<div class="jumbotron">
+    <table class="table table-sm table-hover table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Message Type</th>
+        <th scope="col">Path</th>
+        <th scope="col">Search Keyword</th>
+        <th scope="col">Search Value</th>
+        <th scope="col">Partner Id</th>
+        <th scope="col">Content Type</th>
+        <th scope="col">Is Default</th>
+        <th scope="col">File Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor=" let simulationData of simulationDataList">
+        <td>{{ simulationData.productName}}</td>
+        <td>{{ simulationData.messageType}}</td>
+        <td>{{ simulationData.path}}</td>
+        <td>{{ simulationData.searchKeyword}}</td>
+        <td>{{ simulationData.searchValue}}</td>
+        <td>{{ simulationData.partnerId}}</td>
+        <td>{{ simulationData.contentType}}</td>
+        <td>{{ simulationData.isDefault}}</td>
+        <td> <a href="#" (click)="getXMLContent($event,simulationData.payload)" data-toggle="modal" data-target="#exampleModalScrollable">{{simulationData.fileName}}</a></td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content" style="height:500px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">XML Content</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y: auto;">
+        {{xmlContent}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

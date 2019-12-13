@@ -1,0 +1,44 @@
+<!--<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow">-->
+  <!--<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><img border="0" src="logo.gif"></a>-->
+<!--</nav>-->
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 col-sm-2 d-none d-md-block sidebar">
+      <div class="sidebar-sticky">
+        <div class="accordion" id="accordionExample">
+          <div *ngFor="let productItem of product">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne"
+                          aria-expanded="false" aria-controls="collapseOne">
+                    {{productItem.name}}
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <div *ngFor="let messageType of productItem.messageTypes">
+                    <a (click)="getConfigParams($event,productItem.name,messageType)" class="btn btn-primary">{{messageType}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
+      <div class="jumbotron" id="simToollHeader" *ngIf="loadJumbotron">
+        <h1 class="display-4">Welcome to SIMTOOL 2.0</h1>
+        <p class="lead">This is Next Generation Tool.</p>
+        <hr class="my-4">
+      </div>
+
+      <app-config-parameters *ngIf="loadComponent" [loadConfigParams]="configParams"></app-config-parameters>
+
+        <app-config-params-list *ngIf="simulationDataList" [simulationDataList]='simulationDataList'></app-config-params-list>
+    </main>
+  </div>
+</div>

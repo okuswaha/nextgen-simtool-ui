@@ -1,0 +1,59 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="input-group mb-3 col-md-3">
+          <select class="custom-select" id="inputGroupSelect01" (change)="getPathValue($event)"
+                  disabled="{{disabledProperty}}">
+            <option selected>Select Path</option>
+            <option [value]="path" *ngFor="let path of loadConfigParams.paths">{{path}}</option>
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                 placeholder="Patner-ID" (change)="getPatnerKeyValue($event)">
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <select class="custom-select" id="inputGroupSelect02" (change)="getSearchKeyValue($event)"
+                  disabled="{{disabledProperty}}">
+            <option selected>Select Search Key</option>
+            <option [value]="searchKeyword" *ngFor="let searchKeyword of loadConfigParams.searchKeywords">
+              {{searchKeyword}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                 disabled="{{disabledProperty}}"
+                 placeholder="Search Value" (change)="getSearchValue($event)">
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="input-group mb-3 col-md-6 text">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <span>Set as default</span>&nbsp;
+              <input type="checkbox" aria-label="Checkbox for following text input" (change)="getCheckBoxValue($event)"
+                     [(ngModel)]="defaultCheckbox">
+            </div>
+          </div>
+          <div class="custom-file">
+            <input (change)="onFileChange($event.target.files)" type="file" class="custom-file-input input-sm"
+                   id="inputGroupFile02" [(ngModel)]="fileLabelName">
+            <label class="custom-file-label" for="inputGroupFile02" >{{fileLabelName}}</label>
+          </div>
+          <div class="input-group-append">
+            <button (click)="import()" class="input-group-text">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
